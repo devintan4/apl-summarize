@@ -1,0 +1,17 @@
+name: pdf-summarizer
+channels:
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cpuonly
+  - pip
+  - pip:
+      - tensorflow>=2.6
+      - tf-keras
+      - flax>=0.4.1
+      - transformers
+      - pdfplumber
