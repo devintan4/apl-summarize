@@ -1,16 +1,21 @@
 const express = require('express');
+const logger = require('winston');
 const cors = require('cors');
-const summarizeRoute = require('./routes/summarize');
+const config = require('./config');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// Logger sederhana
+logger.level = 'info';
+
+app.use('/api/summarize', uploadRouter);
+
 app.use('/uploads', express.static('uploads'));
 
-app.use('/api/summarize', summarizeRoute);
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(config.port, () => {
+  logger.info(`Server jalan di http://localhost:${config.port}`);
 });
