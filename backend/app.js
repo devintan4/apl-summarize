@@ -1,21 +1,19 @@
 const express = require('express');
-const logger = require('winston');
-const cors = require('cors');
-const config = require('./config');
-const uploadRouter = require('./routes/upload');
+const uploadRoute = require('./routes/upload');
+const logger = require('./middleware/logger');
+const errorHandler = require('./middleware/errorHandler');
+const pdfContentType = require('./middleware/pdfContentType');
+const rateLimiter = require('./middleware/rateLimiter');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-app.use(express.json());
+app.use(logger);          // Logging semua request
+app.use(rateLimiter);     // Batasi request user
 
-// Logger sederhana
-logger.level = 'info';
+// Route upload PDF
+app.use('/upload', pdfContentType, uploadRoute);
 
-app.use('/api/summarize', uploadRouter);
+app.use(errorHandler);    // Tangani error paling akhir
 
-app.use('/uploads', express.static('uploads'));
-
-app.listen(config.port, () => {
-  logger.info(`Server jalan di http://localhost:${config.port}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server ready at http://localhost:${PORT}`));
