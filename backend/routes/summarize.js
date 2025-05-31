@@ -1,3 +1,5 @@
+// base app [not used]
+
 const express = require('express');
 const multer = require('multer');
 const { exec } = require('child_process');
@@ -6,7 +8,7 @@ const fs = require('fs');
 
 const router = express.Router();
 
-// Konfigurasi direktori
+// Konfigurasi direktoriz
 const uploadsDir = path.join(__dirname, '..', 'uploads');
 const resultsDir = path.join(__dirname, '..', 'results');
 
