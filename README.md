@@ -6,7 +6,7 @@
 2. cd machine-learning
 3. conda env create -f environment.yml
 
-4. Tanpa menghapus terminal sebelumnya, buat terminal baru dan jalankan conda activate pdf_summarizer
+4. Tanpa menghapus terminal sebelumnya, buat terminal baru dan jalankan conda activate pdf-summarizer
 5. cd backend
 6. Jalankan script backend
 
@@ -16,6 +16,6 @@
 2. git pull origin development
 3. conda env create -f environment.yml
 
-4. Tanpa menghapus terminal sebelumnya, buat terminal baru dan jalankan conda activate pdf_summarizer
+4. Tanpa menghapus terminal sebelumnya, buat terminal baru dan jalankan conda activate pdf-summarizer
 5. cd backend
 6. Jalankan script backend
