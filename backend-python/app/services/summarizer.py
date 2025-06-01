@@ -8,7 +8,7 @@ class PDFSummarizer:
     (dalam token) ≤ max_position_embeddings, lalu generate summary.
     """
 
-    def _init_(self, model_name: str = "facebook/bart-large-cnn"):
+    def __init__(self, model_name: str = "facebook/bart-large-cnn"):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
