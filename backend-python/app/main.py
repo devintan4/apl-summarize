@@ -1,5 +1,6 @@
 # Import Libraries & Modules
 from flask import Flask
+from flask_cors import CORS
 import os
 
 from services.summarizer import PDFSummarizer
@@ -9,6 +10,8 @@ from routes.summarize import summarize_bp
 
 def create_app():
     app = Flask(__name__)
+
+    CORS(app)
 
     print("Initializing PDFSummarizer...")
     try:
@@ -35,4 +38,4 @@ def create_app():
 # --- Jalankan Aplikasi ---
 if __name__ == '__main__':
     app = create_app()
-    app.run()
+    app.run(host='0.0.0.0')
