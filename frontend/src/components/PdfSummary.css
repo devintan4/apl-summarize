@@ -1,0 +1,307 @@
+/* src/components/PdfSummary.css */
+
+/* --- General Container & Background --- */
+.pdf-summary-container {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(233, 243, 255, 1) 100%
+    ); /* Menggunakan background dari Desktop13 */
+    height: auto; /* Biarkan tinggi menyesuaikan konten */
+    min-height: 100vh; /* Pastikan minimal satu viewport height */
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 40px; /* Jaga padding bawah */
+    padding-top: 80px; /* Padding atas agar tidak menempel header */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Untuk menengahkan konten */
+}
+
+.hero-header { /* Pastikan Anda mengimpor atau mendefinisikan ini */
+    position: relative;
+    text-align: center;
+    padding-top: 0; /* Header sudah ada padding dari container */
+    z-index: 1;
+    margin-bottom: 40px; /* Jarak antara header dan konten utama */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Menyesuaikan jarak */
+}
+
+.logo-box {
+    width: 40px;
+    height: 40px;
+    background: #091F5B;
+    border-radius: 8px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-family: 'Montserrat-Bold', sans-serif; /* Mengambil font dari Figma export */
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #091F5B;
+}
+
+.hero-header h2 {
+    font-family: 'Montserrat-SemiBold', sans-serif; /* Mengambil font dari Figma export */
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 59px;
+    text-align: center;
+    color: #091F5B;
+    margin-bottom: 16px;
+}
+
+.hero-header h2 u {
+    text-decoration: none;
+    border-bottom: 3px solid #091F5B;
+    padding-bottom: 2px;
+}
+
+.subtitle {
+    font-family: 'Montserrat-Regular', sans-serif; /* Mengambil font dari Figma export */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #091F5B;
+    margin-bottom: 60px;
+}
+
+
+/* --- Main Content Wrapper (layouting) --- */
+.summary-content-wrapper {
+    display: flex;
+    flex-direction: row; /* Desktop layout */
+    gap: 24px;
+    max-width: 1200px; /* Lebar maksimum konten */
+    width: 100%; /* Memastikan wrapper mengambil lebar penuh container */
+    padding: 0 20px;
+    box-sizing: border-box; /* Pastikan padding dihitung dalam width */
+    justify-content: center; /* Tengahkan card di desktop */
+    align-items: flex-start; /* Align item di bagian atas */
+}
+
+/* --- Left Card (Summary Content) --- */
+.summary-main-card {
+    background: #FFFFFF;
+    border-radius: 20px; /* Dari Figma */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); /* Dari Figma (rectangle-40) */
+    flex: 2; /* Mengambil 2 bagian */
+    padding: 20px; /* Padding internal */
+    position: relative; /* Penting untuk penempatan relatif elemen di dalamnya */
+    min-height: 570px; /* Set min-height sesuai desain Figma (rectangle-34) */
+}
+
+/* Tab Styles (from previous PdfSummary.css, keep them consistent with Figma's PDF Title 1/2 look) */
+.tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Jarak antar tab */
+    margin-bottom: 20px;
+    padding-bottom: 10px; /* Ruang untuk tab */
+    border-bottom: 1px solid #E2E8F0; /* Opsional: Garis bawah untuk memisahkan tab dari konten */
+}
+
+.tab-item {
+    padding: 8px 16px;
+    border-radius: 6px; /* Lebih kecil dari full-rounded, seperti di Figma */
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s ease, color 0.2s ease;
+    background: #E2E8F0; /* Default background untuk tab tidak aktif */
+    color: #091F5B; /* Default text color */
+}
+
+.tab-item.active-tab { /* Kelas untuk tab aktif */
+    background: #FFFFFF; /* Tab aktif background putih */
+    color: #091F5B; /* Warna teks sama */
+    border-bottom: 3px solid #344EAB; /* Garis bawah biru untuk tab aktif */
+    border-radius: 6px 6px 0 0; /* Sudut atas saja yang bulat */
+    margin-bottom: -1px; /* Overlap border bawah card */
+}
+
+.close-tab-button {
+    background: none;
+    border: none;
+    color: inherit; /* Warna ikon sama dengan teks tab */
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Summary Text Area */
+.summary-text-area {
+    /* Gaya font dan warna dari lorem-ipsum-dolor-sit-amet... */
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #091F5B; /* Warna utama */
+    line-height: 1.6;
+    padding: 0px; /* Tidak ada padding internal lagi, karena teksnya full width */
+    max-height: 400px; /* Sesuaikan tinggi agar konten bisa discroll */
+    overflow-y: auto;
+    white-space: pre-wrap; /* Mempertahankan format spasi dan baris baru */
+    margin-top: 10px; /* Jarak dari tab */
+}
+
+/* Specific text styling from Figma (nested spans) */
+.summary-text-area .span2 { /* Untuk teks yang lebih terang */
+    color: rgba(9, 31, 91, 0.86);
+}
+.summary-text-area .span3 { /* Untuk teks yang paling terang */
+    color: rgba(9, 31, 91, 0.7);
+}
+
+
+/* Copy Button */
+.copy-button {
+    background: #344EAB; /* Warna dari Figma */
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: "Montserrat-SemiBold", sans-serif; /* Dari Figma */
+    font-size: 16px; /* Dari Figma */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 20px; /* Jarak dari teks summary */
+    width: 140px; /* Sesuaikan lebar tombol */
+    text-align: center; /* Pusatkan teks */
+    display: block; /* Agar tombol berada di baris baru */
+    margin-left: auto; /* Untuk memposisikan di kanan, seperti di Figma */
+    margin-right: 0;
+}
+
+.copy-button:hover {
+    background: #2a4091;
+}
+
+/* --- Right Card (Summarize Another File) --- */
+.upload-new-file-card {
+    background: #FFFFFF;
+    border-radius: 20px; /* Dari Figma */
+    box-shadow: 0px 0px 5px 0px rgba(52, 78, 171, 0.25); /* Dari Figma (rectangle-40) */
+    flex: 1; /* Mengambil 1 bagian */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px; /* Tinggi minimum */
+    text-align: center;
+}
+
+.upload-new-text {
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #091F5B;
+    margin-bottom: 20px;
+}
+
+.upload-new-button {
+    background: #344EAB; /* Warna dari Figma (rectangle-332) */
+    color: #FFFFFF;
+    border-radius: 8px; /* Dari Figma */
+    padding: 12px 24px;
+    font-family: "Montserrat-SemiBold", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%; /* Lebar penuh dalam card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-new-button:hover {
+    background: #2a4091;
+}
+
+/* --- Responsive Adjustments (Sama dengan sebelumnya, tapi bisa disesuaikan) --- */
+@media (max-width: 768px) {
+    .summary-content-wrapper {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .summary-main-card, .upload-new-file-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .summary-text-area {
+        max-height: 300px; /* Adjust for mobile */
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    .copy-button {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .upload-new-text {
+        font-size: 16px;
+    }
+
+    .upload-new-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+.upload-options {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.url-button {
+  background: #4a5568;
+}
+
+.url-button:hover {
+  background: #2d3748;
+}
+
+.url-input-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.url-input-field {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.submit-url-button {
+  background: #344EAB;
+  color: white;
+}
+
+.submit-url-button:hover {
+  background: #2a4091;
+}

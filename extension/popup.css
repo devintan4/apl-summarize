@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 350px; /* Lebar popup */
+    padding: 10px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+p#message {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    min-height: 20px; /* Agar layout tidak bergeser saat teks berubah */
+    text-align: center;
+}
+
+input[type="file"] {
+    margin-bottom: 15px;
+    width: 90%; /* Agar tidak terlalu mepet ke pinggir */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 90%;
+    box-sizing: border-box; /* Agar padding tidak menambah lebar */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#summaryOutput {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 90%;
+    min-height: 50px;
+    font-size: 0.85em;
+    box-sizing: border-box;
+}
+
+#summaryOutput h2 {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 0;
+}
