@@ -2,13 +2,9 @@ import pdfplumber
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-class PDFSummarizer:
-    """
-    Extract teks dari PDF, chunking per‐chunk sehingga panjang
-    (dalam token) ≤ max_position_embeddings, lalu generate summary.
-    """
 
-    def _init_(self, model_name: str = "facebook/bart-large-cnn"):
+class PDFSummarizer:
+    def __init__(self, model_name: str = "facebook/bart-large-cnn"):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -39,16 +35,15 @@ class PDFSummarizer:
 
             # Clamp aman agar tidak error saat generate
             if len(input_ids) > self.max_input_len:
-                input_ids = input_ids[:self.max_input_len]
+                input_ids = input_ids[: self.max_input_len]
                 if input_ids[-1] != self.tokenizer.eos_token_id:
                     input_ids[-1] = self.tokenizer.eos_token_id
 
             yield input_ids
 
-    def _summarize_ids(self,
-                       input_ids: list[int],
-                       max_length: int = 512,
-                       min_length: int = 30) -> str:
+    def _summarize_ids(
+        self, input_ids: list[int], max_length: int = 512, min_length: int = 30
+    ) -> str:
         x = torch.tensor([input_ids], device=self.device)
         mask = (x != self.tokenizer.pad_token_id).long()
 
@@ -58,18 +53,15 @@ class PDFSummarizer:
             max_length=max_length,
             min_length=min_length,
             no_repeat_ngram_size=3,
-            early_stopping=True
+            early_stopping=True,
         )
         return self.tokenizer.decode(
-            out[0],
-            skip_special_tokens=True,
-            clean_up_tokenization_spaces=True
+            out[0], skip_special_tokens=True, clean_up_tokenization_spaces=True
         )
 
-    def summarize_pdf(self,
-                      pdf_path: str,
-                      max_length: int = 512,
-                      min_length: int = 30) -> str:
+    def summarize_pdf(
+        self, pdf_path: str, max_length: int = 512, min_length: int = 30
+    ) -> str:
         text = self.extract_text(pdf_path)
 
         if not text.strip():
@@ -79,8 +71,8 @@ class PDFSummarizer:
         for chunk_ids in self._chunk_ids(text):
             print(f"Chunk with {len(chunk_ids)} tokens - summarizing...")
             summaries.append(
-                self._summarize_ids(chunk_ids,
-                                    max_length=max_length,
-                                    min_length=min_length)
+                self._summarize_ids(
+                    chunk_ids, max_length=max_length, min_length=min_length
+                )
             )
         return "\n\n".join(summaries)
