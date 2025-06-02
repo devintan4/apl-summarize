@@ -5,7 +5,7 @@ module.exports = {
   port: process.env.PORT || 3000,
   pythonExec:
     process.env.PYTHON_PATH ||
-    "C:/Users/vnine/anaconda3/envs/pdf_summarizer/python.exe",
+    "C:/Users/vnine/anaconda3/envs/pdf-summarizer/python.exe",
   pythonScript: path.join(
     __dirname,
     "..",
