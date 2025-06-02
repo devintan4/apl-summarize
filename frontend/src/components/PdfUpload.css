@@ -1,0 +1,420 @@
+/* src/components/PdfUpload.css */
+.pdf-hero-container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 400px; /* Space for how-to-section */
+}
+
+.background-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url('/v262_60.png');
+  opacity: 0.02;
+  z-index: 0;
+}
+
+.hero-header {
+  position: relative;
+  text-align: center;
+  padding-top: 80px;
+  z-index: 1;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.logo-box {
+  width: 40px;
+  height: 40px;
+  background: #091F5B;
+  border-radius: 8px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #091F5B;
+}
+
+.hero-header h2 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 59px;
+  text-align: center;
+  color: #091F5B;
+  margin-bottom: 16px;
+}
+
+.hero-header h2 u {
+  text-decoration: none;
+  border-bottom: 3px solid #091F5B;
+  padding-bottom: 2px;
+}
+
+.subtitle {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #091F5B;
+  margin-bottom: 60px;
+}
+
+.upload-area {
+  position: relative;
+  width: 100%;
+  max-width: 778px;
+  height: 325px;
+  margin: 0 auto 30px;
+  background: #FFFFFF;
+  border: 3px dashed #6E96D3;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.upload-area.file-selected {
+  justify-content: center;
+}
+
+.upload-icon {
+  font-size: 64px;
+  color: #6F96D1;
+  margin-bottom: 32px;
+}
+
+.upload-area p {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #091F5B;
+  margin-bottom: 32px;
+}
+
+.browse-button {
+  background: #344EAB;
+  border-radius: 10px;
+  border: none;
+  padding: 12px 24px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.browse-button:hover {
+  background: #2a4091;
+}
+
+.selection-confirmation {
+  text-align: center;
+}
+
+.selection-confirmation p:first-child {
+  font-weight: 600;
+  color: #091F5B;
+  margin-bottom: 16px;
+}
+
+.link-section {
+  position: relative;
+  width: 100%;
+  max-width: 778px;
+  margin: 0 auto 60px;
+  z-index: 1;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #E2E8F0;
+}
+
+.divider span {
+  padding: 0 16px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #344EAB;
+}
+
+.url-input {
+  width: 100%;
+  padding: 16px;
+  background: #FFFFFF;
+  border: 3px dashed #6E96D3;
+  border-radius: 20px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(9, 31, 91, 0.5);
+}
+
+.how-to-section {
+  position: absolute;
+  width: 100%;
+  height: 400px; /* Keep this height for the blue section */
+  left: 0;
+  bottom: 0;
+  background: #6F96D1;
+  box-shadow: 0px -4px 50px 1px rgba(98, 134, 185, 0.3);
+  border-radius: 120px 120px 0 0;
+  padding-top: 60px;
+  z-index: 1;
+}
+
+.how-to-section h3 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  color: #F8FBFF;
+  margin-bottom: 60px;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Reduced gap to bring cards closer as in screenshot */
+  max-width: 900px; /* Keep max-width for overall container */
+  margin: 0 auto;
+}
+
+.step {
+  width: 250px; /* Adjusted width to match screenshot appearance */
+  height: 230px; /* Fixed height to align the bottom icons */
+  background: #F8FBFF;
+  border-radius: 32px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Start content from the top */
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: #3351B3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px; /* Margin below the number */
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.step h4 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #091F5B;
+  margin-bottom: 10px; /* Margin below the title */
+}
+
+.step p {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(9, 31, 91, 0.5);
+  margin-bottom: 0; /* Remove default bottom margin */
+  flex-grow: 1; /* Allow the paragraph to grow and push icons down */
+}
+
+.step-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto; /* Push the icons to the very bottom */
+}
+
+/* src/components/PdfUpload.css */
+/* ... kode CSS yang sudah ada ... */
+
+.selection-confirmation {
+  text-align: center;
+  display: flex; /* Untuk menata elemen secara horizontal atau vertikal */
+  flex-direction: column; /* Menata elemen secara vertikal */
+  align-items: center; /* Memposisikan elemen di tengah secara horizontal */
+  justify-content: center; /* Memposisikan elemen di tengah secara vertikal */
+  height: 100%; /* Memastikan div mengambil tinggi penuh dari parent upload-area */
+}
+
+.selection-confirmation p.file-selected-text { /* Kelas spesifik untuk teks nama file */
+  font-weight: 600;
+  color: #091F5B;
+  margin-bottom: 24px; /* Meningkatkan jarak dengan tombol */
+  font-size: 18px; /* Ukuran font lebih besar untuk nama file */
+}
+
+.browse-button.summarize-button {
+  background: #344EAB;
+  margin-top: 10px; /* Jarak antara teks file dan tombol summarize */
+}
+
+.browse-button.choose-another-button {
+  background: #6c757d; /* Warna abu-abu untuk tombol "Choose Another File" */
+  margin-top: 10px; /* Jarak antara tombol summarize dan choose another */
+}
+
+.browse-button.choose-another-button:hover {
+  background: #5a6268;
+}
+
+/* Penyesuaian untuk tampilan mobile */
+@media (max-width: 768px) {
+  .hero-header h2 {
+    font-size: 36px;
+    line-height: 45px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .upload-area {
+    height: 280px;
+  }
+
+  .upload-icon {
+    font-size: 50px;
+    margin-bottom: 24px;
+  }
+
+  .upload-area p {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 24px;
+  }
+
+  .browse-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .link-section {
+    max-width: 90%;
+  }
+
+  .url-input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .how-to-section {
+    border-radius: 60px 60px 0 0;
+    padding-top: 40px;
+    height: auto; /* Allow height to adjust */
+    padding-bottom: 40px;
+  }
+
+  .how-to-section h3 {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 40px;
+  }
+
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .step {
+    width: 90%;
+    height: auto; /* Allow height to adjust for content */
+    padding: 20px;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .step h4 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .step p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.url-summarize-button {
+  margin-top: 10px;
+  width: 100%;
+  background: #344EAB;
+  color: white;
+}
+
+.url-summarize-button:hover {
+  background: #2a4091;
+}
+
+.url-summarize-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+form {
+  width: 100%;
+}
